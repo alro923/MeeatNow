@@ -20,12 +20,12 @@ Github
 Slack  
 
 ### 담당 파트
-강근우 - Front
-김하늬 - Back
-이경은 - Back
-이주현 - Design
-이현주 - Machine-Learning
-주이식 - Android, PM
+강근우 - Front  
+김하늬 - Back  
+이경은 - Back  
+이주현 - Design  
+이현주 - Machine-Learning  
+주이식 - Android, PM  
 
 #### 참여자
 강근우  [moaikang](https://github.com/moaikang)  
