@@ -1,4 +1,4 @@
-# MeeatNow -
+# MeeatNow - 지금맛나
 
 ### 이 프로젝트는 무엇인가요?
 하나의 프로젝트에 다양한 분야(Web, Server, Android, AI, Design)의 기술을 구현하는 프로젝트 입니다.
