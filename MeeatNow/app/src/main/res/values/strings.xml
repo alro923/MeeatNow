@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MeeatNow</string>
+    <string name="kakao_app_key">b2a77bb150c8a6e79e19efac42edf3d7</string>
+    <string name="facebook_app_id">192729828611500</string>
+    <string name="fb_login_protocol_scheme">fb192729828611500</string>
+    <string-array name="use">
+        <item>사진을 찍거나 갤러리에서 선택해주세요</item>
+        <item>선택된 사진을 머신러닝을 통해 분석합니다</item>
+
+    </string-array>
+</resources>

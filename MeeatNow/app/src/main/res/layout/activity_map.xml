@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:layout_marginTop="0dp"
+        android:fillViewport="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ListView
+
+                android:id="@+id/LLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:choiceMode="singleChoice">
+
+
+            </ListView>
+
+            <Button
+                android:id="@+id/map_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="listview" />
+
+            <Button
+                android:id="@+id/gpstest_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="gpstest" />
+
+            <Button
+                android:id="@+id/go_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="go"
+
+                android:text="goweb" />
+
+            <TextView
+                android:id="@+id/map_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="asdasd" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TableLayout
+        android:id="@+id/page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#ffffff66"
+        android:stretchColumns="*"
+        android:visibility="invisible">
+
+        <TableRow>
+
+            <com.skydoves.elasticviews.ElasticButton
+                app:button_duration="150"
+                android:id="@+id/newchat_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="채팅 새로 만들기"></com.skydoves.elasticviews.ElasticButton>
+
+            <com.skydoves.elasticviews.ElasticButton
+                app:button_duration="150"
+                android:id="@+id/findchat_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오픈채팅 참여"></com.skydoves.elasticviews.ElasticButton>
+        </TableRow>
+    </TableLayout>
+
+</FrameLayout>
