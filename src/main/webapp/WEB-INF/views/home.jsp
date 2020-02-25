@@ -1,30 +1,29 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
+    <meta charset="utf-8">
+    <title>test page</title>
+    <script src="https://code.jquery.com/jquery-2.2.1.js"></script>
 </head>
 <body>
 Welcome, this is home
 
-<form>
+<form id="form-login">
     email : <input type="text" name="email">
     name : <input type="text" name="name">
-    <input type="button" value="제출" onclick="submit_user()">
+    <button type="button" id="submitBtn">제출</button>
 </form>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</html>
 <script type="text/javascript">
-
-    function submit_user() {
-
-        alert("submit_user()");
-
+    $(document).on('click','#submitBtn',function(){
         var data = {
             email: $('input[name=email]').val(),
             name: $('input[name=name]').val()
         };
 
         console.log("data: ", data);
+        console.log(JSON.stringify(data));
 
         $.ajax({
             url: "/user/insert",
@@ -32,6 +31,10 @@ Welcome, this is home
             data: JSON.stringify(data),
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
+
+            beforeSend: function(){
+                alert("submit_user()");
+            },
             success: function(data){
                 alert(JSON.stringify(data)+'추가되었습니다.');
             },
@@ -40,6 +43,5 @@ Welcome, this is home
             }
 
         })
-    }
+    })
 </script>
-</html>
