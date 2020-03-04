@@ -1,12 +1,19 @@
 package com.sejong.eatnow.web;
 
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import com.sejong.eatnow.service.UserService;
 import com.sejong.eatnow.web.dto.UserRequestDto;
 import com.sejong.eatnow.web.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Log
@@ -17,35 +24,67 @@ public class UserController {
 
     private final UserService service;
 
-    //insert
     @PostMapping("/insert")
-    public Long insert(@RequestBody UserRequestDto dto) {
+    public ResponseEntity<String> insert(@RequestBody UserRequestDto dto) {
         log.info("insert (controller) 진입");
-        return service.insert(dto);
-
+        ResponseEntity<String> entity = null;
+        try {
+            service.insert(dto);
+            entity = new ResponseEntity<>(HttpStatus.OK);
+        } catch (DataIntegrityViolationException e) {
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return entity;
     }
 
-    //update
     @PostMapping("/update/{id}")
-    public Long update(@PathVariable Long id, @RequestBody UserRequestDto dto) {
-        return service.update(id,dto);
+    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody UserRequestDto dto) {
+        log.info("update (controller) 진입");
+        ResponseEntity<String> entity = null;
+        try {
+            service.update(id, dto);
+            entity = new ResponseEntity<>(HttpStatus.OK);
+        } catch (NullPointerException e) {
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch( DataAccessException  e){
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return entity;
     }
 
-    //find
     @GetMapping("/find/{id}")
-    public UserResponseDto find(@PathVariable Long id) {
-        return service.findById(id);
+    public ResponseEntity<UserResponseDto> find(@PathVariable Long id) {
+        log.info("find (controller) 진입");
+        ResponseEntity<UserResponseDto> entity = null;
+
+        try {
+            UserResponseDto responseDto = service.findById(id);
+            entity = new ResponseEntity<>(responseDto, HttpStatus.OK);
+        }catch (DataAccessException e){
+            log.warning("find user failed...."+e.getMessage());
+            entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (NullPointerException e) {
+            log.warning("find user failed...." + e.getMessage());
+            entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return entity;
     }
 
-    //delete
-    @PostMapping("/delete/{id}")
-    public Long delete(@PathVariable Long id){
-        return service.deleteById(id);
-    }
-
-    //findAll
     @GetMapping("/findAll")
-    public List<UserResponseDto> findAllDesc(){
-        return service.findAllDesc();
+    public ResponseEntity<List<UserResponseDto>> findAllDesc() {
+        return new ResponseEntity<>(service.findAllDesc(), HttpStatus.OK);
+    }
+
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        log.info("delete (controller) 진입");
+        ResponseEntity<String> entity = null;
+        try {
+            service.deleteById(id);
+            entity = new ResponseEntity<>(HttpStatus.OK);
+        } catch (EmptyResultDataAccessException e) {
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return entity;
     }
 }

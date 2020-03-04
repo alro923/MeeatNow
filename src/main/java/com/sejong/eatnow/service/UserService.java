@@ -5,12 +5,17 @@ import com.sejong.eatnow.domain.user.UserRepository;
 import com.sejong.eatnow.web.dto.UserRequestDto;
 import com.sejong.eatnow.web.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Log
 @RequiredArgsConstructor
 @Service
 public class UserService {
@@ -18,29 +23,29 @@ public class UserService {
     private final UserRepository repo;
 
     @Transactional
-    public Long insert(UserRequestDto dto){
-
-        return repo.save(dto.toEntity()).getId();
+    public void insert(UserRequestDto dto) {
+        try {
+            repo.save(dto.toEntity());
+        } catch (DataIntegrityViolationException e)  //email 값이 유일성을 가지므로 중복되면 예외처리.
+        {
+            log.warning("insert user failied...." + e.getMessage());
+            throw new DataIntegrityViolationException("다른 유저와 email이 중복됩니다.");
+        }
     }
 
     @Transactional
-    public Long update(Long id, UserRequestDto dto){
+    public void update(Long id, UserRequestDto dto) throws DataAccessException {
+
         User target = repo.findById(id).orElseThrow(
-                ()->new IllegalArgumentException("id를 찾을 수 없습니다."));
-
-        target.update(target.getEmail(), target.getName());
-        return target.getId();
+                () -> new NullPointerException("찾는 유저가 없습니다."));
+        target.update(dto.getEmail(), dto.getName());
     }
 
-    @Transactional
-    public Long deleteById(Long id) {
-        repo.deleteById(id);
-        return id;
-    }
+
     @Transactional(readOnly = true)
-    public UserResponseDto findById(Long id){
+    public UserResponseDto findById(Long id) {
         User target = repo.findById(id).orElseThrow(
-                ()->new IllegalArgumentException("id를 찾을 수 없습니다."));
+                () -> new NullPointerException("찾는 유저가 없습니다."));
 
         return UserResponseDto.builder()
                 .id(target.getId())
@@ -50,9 +55,19 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public List<UserResponseDto> findAllDesc(){
+    public List<UserResponseDto> findAllDesc() {
         return repo.findAllDesc().stream()
                 .map(UserResponseDto::new)  //UserResponseDto 내부에 User가 파라미터인 생성자 필요
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        try {
+            repo.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            log.warning("delete user failied...." + e.getMessage());
+            throw e;
+        }
     }
 }
