@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewChatActivity">
+
+    <LinearLayout
+        android:id="@+id/firstlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mtf_image="@drawable/user_24dp"
+            app:mtf_labelColor="#231"
+
+            app:mtf_openKeyboardOnFocus="true">
+
+            <EditText
+                android:id="@+id/chatname_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/chatname_textview"
+                android:hint="채팅방 이름"
+                android:textSize="15dp"></EditText>
+        </com.github.florent37.materialtextfield.MaterialTextField>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/secondlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firstlayout"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mtf_image="@drawable/user_24dp"
+            app:mtf_labelColor="#666"
+            app:mtf_openKeyboardOnFocus="true">
+
+
+        <EditText
+            android:id="@+id/chatpeople_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/chatpeople_textview"
+            android:hint="모집인원"
+            android:textSize="15dp"></EditText>
+        </com.github.florent37.materialtextfield.MaterialTextField>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/thirdlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/secondlayout"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mtf_image="@drawable/user_24dp"
+            app:mtf_labelColor="#666"
+            app:mtf_openKeyboardOnFocus="true">
+        <EditText
+            android:id="@+id/chatdate_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/chatdate_textview"
+            android:hint="날짜 및 시간"
+            android:textSize="15dp"></EditText>
+        </com.github.florent37.materialtextfield.MaterialTextField>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/fourthlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/thirdlayout"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mtf_image="@drawable/user_24dp"
+            app:mtf_labelColor="#666"
+            app:mtf_openKeyboardOnFocus="true">
+        <EditText
+            android:id="@+id/chatlink_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/chatlink_textview"
+            android:hint="오픈채팅 링크"
+            android:textSize="15dp"></EditText>
+        </com.github.florent37.materialtextfield.MaterialTextField>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ok_button"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:text="확인"
+        android:textSize="40dp"></Button>
+</RelativeLayout>

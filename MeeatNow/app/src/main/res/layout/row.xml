@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.first.meeatnow.CheckableLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/selector_btn_click"
+    android:orientation="vertical">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:stretchColumns="*">
+        <TableRow>
+            <TextView
+                android:id="@+id/textView0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:text="title"
+                android:textSize="23dp"
+                android:textStyle="bold" />
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:clickable="false"
+                android:layout_gravity="end">
+
+
+            </CheckBox>
+        </TableRow>
+        <TableRow>
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="address"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:gravity="fill"
+            />
+
+        <TextView
+            android:layout_gravity="right"
+            android:text="tel"
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="#666666"
+            />
+        </TableRow>
+    </TableLayout>
+
+
+
+</org.first.meeatnow.CheckableLinearLayout>
