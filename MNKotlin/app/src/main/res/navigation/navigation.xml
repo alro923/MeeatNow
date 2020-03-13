@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/food1Framgent"
-        android:name="org.first.mnkotlin.FoodFragemnts.Food1Framgent"
+        android:name="org.first.mnkotlin.foodFragemnts.Food1Framgent"
         android:label="fragment_food1_framgent"
         tools:layout="@layout/fragment_food1_framgent" />
 </navigation>
