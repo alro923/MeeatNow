@@ -9,12 +9,13 @@
 ### 사용기술
 Front : React  
 Back : Spring  
-Android : Java  
+Android : Kotlin  
 Machine-Learning : Python  
 
 ### 협업 툴
 Github  
 Slack  
+Notion
 
 ### 담당 파트
 강근우 - Front  
