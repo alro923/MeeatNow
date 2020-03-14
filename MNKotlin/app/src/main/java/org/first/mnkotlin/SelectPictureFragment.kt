@@ -135,7 +135,6 @@ class SelectPictureFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null) {
-
             binding.galleryImageview.setImageURI(viewModel.changeImageInGallery(data))
             runMachineLearning()
         } else if (requestCode == GET_CAMERA_IMAGE && resultCode == RESULT_OK && data != null) {
@@ -147,7 +146,7 @@ class SelectPictureFragment : Fragment() {
     fun runMachineLearning() {
         if (isMachineLearningComplete) {
             // 다음 fragment로 이동
-            findNavController().navigate(R.id.action_selectPictureFragment_to_food1Framgent)
+            findNavController().navigate(R.id.action_selectPictureFragment_to_glideViewPagerActivity)
         } else {
             showRetryDialog()
         }
