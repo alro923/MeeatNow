@@ -7,7 +7,7 @@
     <data>
         <variable
             name="vm"
-            type="org.first.mnkotlin.foodFragemnts.Food3ViewModel" />
+            type="org.first.mnkotlin.foodFragemnts.Food2ViewModel" />
     </data>
 
     <LinearLayout

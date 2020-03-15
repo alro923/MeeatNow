@@ -139,14 +139,15 @@ class SelectPictureFragment : Fragment() {
             runMachineLearning()
         } else if (requestCode == GET_CAMERA_IMAGE && resultCode == RESULT_OK && data != null) {
             binding.galleryImageview.setImageBitmap(viewModel.changeImageInCamera(data))
-            runMachineLearning ()
+            runMachineLearning()
         }
     }
 
     fun runMachineLearning() {
         if (isMachineLearningComplete) {
             // 다음 fragment로 이동
-            findNavController().navigate(R.id.action_selectPictureFragment_to_glideViewPagerActivity)
+            var intent = Intent(activity, GlideViewPagerActivity::class.java)
+            startActivity(intent)
         } else {
             showRetryDialog()
         }
