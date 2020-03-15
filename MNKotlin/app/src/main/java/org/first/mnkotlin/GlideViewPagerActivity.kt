@@ -23,30 +23,6 @@ class GlideViewPagerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_glide_view_pager)
         binding =
             DataBindingUtil.setContentView(this, R.layout.activity_glide_view_pager)
-//        binding.viewpager.adapter = pageAdapter
-//        binding.viewpager.setCurrentItem(0)
-//        binding.viewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
-//            override fun onPageScrollStateChanged(state: Int) {
-//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//            }
-//
-//            override fun onPageScrolled(
-//                position: Int,
-//                positionOffset: Float,
-//                positionOffsetPixels: Int
-//            ) {
-//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//            }
-//
-//            override fun onPageSelected(position: Int) {
-//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//                binding.viewpager.currentItem = position
-//            }
-//
-//        })
+        binding.viewpager.adapter = pageAdapter
     }
-
-
-
-
 }

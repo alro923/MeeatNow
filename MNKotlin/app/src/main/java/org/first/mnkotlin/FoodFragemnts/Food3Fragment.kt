@@ -6,28 +6,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 
 import org.first.mnkotlin.R
+import org.first.mnkotlin.databinding.FragmentFood1Binding
+import org.first.mnkotlin.databinding.FragmentFood3Binding
 
 class Food3Fragment : Fragment() {
 
-    companion object {
-        fun newInstance() = Food3Fragment()
-    }
-
-    private lateinit var viewModel: Food3ViewModel
-
+    private lateinit var binding: FragmentFood3Binding
+    private lateinit var viewmodel : Food3ViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_food3, container, false)
-    }
+        // Inflate the layout for this fragment
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(Food3ViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food3, container, false)
+        viewmodel = ViewModelProviders.of(this).get(Food3ViewModel::class.java)
+        binding.vm = Food3ViewModel()
+        return binding.root
     }
 
 }

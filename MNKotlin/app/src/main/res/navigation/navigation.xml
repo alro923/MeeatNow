@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_selectPictureFragment_to_loginFragment2"
             app:destination="@id/loginFragment2" />
-        <action
-            android:id="@+id/action_selectPictureFragment_to_glideViewPagerActivity"
-            app:destination="@id/glideViewPagerActivity" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment2"
@@ -30,13 +27,12 @@
 
     </fragment>
     <fragment
-        android:id="@+id/food1Framgent"
-        android:name="org.first.mnkotlin.foodFragemnts.Food1Framgent"
-        android:label="fragment_food1_framgent"
-        tools:layout="@layout/fragment_food1" />
-    <activity
-        android:id="@+id/glideViewPagerActivity"
-        android:name="org.first.mnkotlin.GlideViewPagerActivity"
-        android:label="activity_glide_view_pager"
-        tools:layout="@layout/activity_glide_view_pager" />
+        android:id="@+id/food5Fragment"
+        android:name="org.first.mnkotlin.foodFragemnts.Food5Fragment"
+        android:label="Food5Fragment"
+        tools:layout="@layout/fragment_food5">
+        <action
+            android:id="@+id/action_food5Fragment_to_selectPictureFragment"
+            app:destination="@id/selectPictureFragment" />
+    </fragment>
 </navigation>
