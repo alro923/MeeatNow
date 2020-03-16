@@ -38,7 +38,7 @@ class SelectPictureFragment : Fragment() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private var facebookLoginCheck = arguments?.getBoolean("isLoggedInWithFacebook")
-    private lateinit var viewModel: SelectPictureViewModel
+    private lateinit var viewmodel: SelectPictureViewModel
     private var GET_GALLERY_IMAGE = 312;
     private var GET_CAMERA_IMAGE = 313;
     private lateinit var binding: FragmentSelectPictureBinding
@@ -72,7 +72,7 @@ class SelectPictureFragment : Fragment() {
         )
         // 뷰 모델
         Log.i("GameFragment", "Called ViewModelProviders.of")
-        viewModel = ViewModelProviders.of(this).get(SelectPictureViewModel::class.java)
+        viewmodel = ViewModelProviders.of(this).get(SelectPictureViewModel::class.java)
 
         // 로그인
         binding.logincheckButton.setOnClickListener { view: View ->
@@ -135,10 +135,10 @@ class SelectPictureFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null) {
-            binding.galleryImageview.setImageURI(viewModel.changeImageInGallery(data))
+            binding.galleryImageview.setImageURI(viewmodel.changeImageInGallery(data))
             runMachineLearning()
         } else if (requestCode == GET_CAMERA_IMAGE && resultCode == RESULT_OK && data != null) {
-            binding.galleryImageview.setImageBitmap(viewModel.changeImageInCamera(data))
+            binding.galleryImageview.setImageBitmap(viewmodel.changeImageInCamera(data))
             runMachineLearning()
         }
     }
@@ -160,7 +160,7 @@ class SelectPictureFragment : Fragment() {
             .setCancelable(false)
             .setPositiveButton("예", object : DialogInterface.OnClickListener {
                 override fun onClick(dialog: DialogInterface?, which: Int) {
-                    isMachineLearningComplete = viewModel.changeMachineLearningResult()
+                    isMachineLearningComplete = viewmodel.changeMachineLearningResult()
                     runMachineLearning()
                 }
 
