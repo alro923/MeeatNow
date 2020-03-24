@@ -1,4 +1,4 @@
-package com.sejong.eatnow;
+package com.sejong.eatnow.web;
 
 import com.sejong.eatnow.domain.user.User;
 import com.sejong.eatnow.domain.user.UserRepository;

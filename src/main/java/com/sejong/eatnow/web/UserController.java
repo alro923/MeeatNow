@@ -1,6 +1,5 @@
 package com.sejong.eatnow.web;
 
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import com.sejong.eatnow.service.UserService;
 import com.sejong.eatnow.web.dto.UserRequestDto;
 import com.sejong.eatnow.web.dto.UserResponseDto;
@@ -13,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @Log
@@ -46,7 +44,7 @@ public class UserController {
             entity = new ResponseEntity<>(HttpStatus.OK);
         } catch (NullPointerException e) {
             entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        } catch( DataAccessException  e){
+        } catch (DataAccessException e) {
             entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
@@ -60,8 +58,8 @@ public class UserController {
         try {
             UserResponseDto responseDto = service.findById(id);
             entity = new ResponseEntity<>(responseDto, HttpStatus.OK);
-        }catch (DataAccessException e){
-            log.warning("find user failed...."+e.getMessage());
+        } catch (DataAccessException e) {
+            log.warning("find user failed...." + e.getMessage());
             entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (NullPointerException e) {
             log.warning("find user failed...." + e.getMessage());
