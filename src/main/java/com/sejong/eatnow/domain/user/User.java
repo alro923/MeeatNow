@@ -1,13 +1,16 @@
 package com.sejong.eatnow.domain.user;
 
-import com.sejong.eatnow.domain.chat.Chat;
-import lombok.*;
+import com.sejong.eatnow.domain.loby.Loby;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@ToString
 @Table(name = "USER")
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
@@ -25,11 +28,11 @@ public class User {
     @Column(name = "NAME", length = 20)
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "USER_CHAT",
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_LOBY",
             joinColumns = @JoinColumn(name = "USER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "CHAT_ID"))
-    private List<Chat> chats;
+            inverseJoinColumns = @JoinColumn(name = "LOBY_ID"))
+    private List<Loby> lobies = new ArrayList<>();
 
     public void update(String email, String name) {
         this.email = email;
