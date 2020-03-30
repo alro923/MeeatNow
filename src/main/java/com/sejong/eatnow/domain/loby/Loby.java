@@ -27,7 +27,7 @@ public class Loby {
     private String title;
 
     @Column(name = "LINK")
-    private String openLink;
+    private String openLink; //nullable = true --> 개발자가 직접 할당해줘야하므로
 
     @Column(name = "HOST", nullable = false)
     private String hostName;
