@@ -13,6 +13,7 @@ Welcome, this is home
     name : <input type="text" name="name">
     <button type="button" id="submitBtn">제출</button>
 </form>
+
 </body>
 </html>
 <script type="text/javascript">
@@ -27,6 +28,28 @@ Welcome, this is home
 
         $.ajax({
             url: "/user/insert",
+            type: "POST",
+            data: JSON.stringify(data),
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+
+            beforeSend: function(){
+                alert("submit_user()");
+            },
+            success: function(data){
+                alert(JSON.stringify(data)+'추가되었습니다.');
+            },
+            error: function(error){
+                alert("error: "+ JSON.stringify(error));
+            }
+
+        })
+
+
+        var user_id = 1;
+
+        $.ajax({
+            url: "/user/update/"+user_id,
             type: "POST",
             data: JSON.stringify(data),
             dataType: 'json',

@@ -1,10 +1,12 @@
 package com.sejong.eatnow.web.dto;
 
 import com.sejong.eatnow.domain.user.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 public class UserRequestDto {
 
