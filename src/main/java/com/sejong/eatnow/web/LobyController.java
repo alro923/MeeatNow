@@ -23,9 +23,8 @@ public class LobyController {
 
         ResponseEntity<String> entity = null;
         try {
-//            locationService.insert(dto.getLocationDto());
             service.insert(dto);
-            entity = new ResponseEntity<>(HttpStatus.OK);
+            entity = new ResponseEntity<>("success",HttpStatus.OK);
             log.info("saving Loby successfully....");
         } catch (Exception e) {
             log.warning(e.getMessage());
@@ -41,6 +40,7 @@ public class LobyController {
 
         try {
             service.update(id, dto);
+            entity = new ResponseEntity<>("success",HttpStatus.OK);
         } catch (NullPointerException e) {
             log.warning("loby update failed...." + e.getMessage());
             entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -73,7 +73,7 @@ public class LobyController {
         ResponseEntity<String> entity = null;
         try {
             service.delete(id);
-            entity = new ResponseEntity<>(HttpStatus.OK);
+            entity = new ResponseEntity<>("success",HttpStatus.OK);
         } catch (NullPointerException e) {
             log.warning("delete loby failed...." + e.getMessage());
             entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

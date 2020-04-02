@@ -28,7 +28,7 @@ public class UserController {
         ResponseEntity<String> entity = null;
         try {
             service.insert(dto);
-            entity = new ResponseEntity<>(HttpStatus.OK);
+            entity = new ResponseEntity<>("success",HttpStatus.OK);
         } catch (DataIntegrityViolationException e) {
             entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -41,7 +41,7 @@ public class UserController {
         ResponseEntity<String> entity = null;
         try {
             service.update(id, dto);
-            entity = new ResponseEntity<>(HttpStatus.OK);
+            entity = new ResponseEntity<>("success",HttpStatus.OK);
         } catch (NullPointerException e) {
             entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (DataAccessException e) {
@@ -79,7 +79,7 @@ public class UserController {
         ResponseEntity<String> entity = null;
         try {
             service.deleteById(id);
-            entity = new ResponseEntity<>(HttpStatus.OK);
+            entity = new ResponseEntity<>("success",HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {
             entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
