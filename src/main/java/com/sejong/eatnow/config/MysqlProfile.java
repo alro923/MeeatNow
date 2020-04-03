@@ -6,6 +6,6 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @Profile(value = "develop-mysql")
-@PropertySource({"classpath:develop/application-mysql.properties"})
+@PropertySource({"classpath:application.properties"})
 public class MysqlProfile {
 }
