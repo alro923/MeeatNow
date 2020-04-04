@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/heroku-demo-0.0.1-SNAPSHOT.jar -Dserver.port=$PORT
+web: java -Dspring.server.port=8080 -Dspring.profiles.active=production $JAVA_OPTS -jar target/heroku-demo-0.0.1-SNAPSHOT.jar
