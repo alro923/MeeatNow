@@ -31,12 +31,13 @@ public class LobyService {
         Long longitude = locationDto.getLongitude();
         Long latitude = locationDto.getLatitude();
 
+        /*** 여기 fetch조인으로 해결할 수도 있을것같음. querydsl써서 ***/
         Optional<Location> location = locationRepository.findByLatitudeAndLongitude(latitude,longitude); //latit,longit순
         if (location.isPresent()) {
             log.info("Yes! location is already present.");
             target.setLocation(location.get());
         } else {
-            log.info("No! location isn't present yet. it'll be inserted too.... ");
+            log.info("No! location isn't present yet. newly insert.... ");
             target.setLocation(locationDto.toEntity());
         }
         repo.save(target);
