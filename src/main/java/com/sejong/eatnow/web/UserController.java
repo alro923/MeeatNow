@@ -24,7 +24,7 @@ public class UserController {
 
     @PostMapping("/insert")
     public ResponseEntity<String> insert(@RequestBody UserRequestDto dto) {
-        log.info("insert (controller) 진입");
+        log.info("insert (controller) 진입: "+dto.getEmail()+", "+dto.getName());
         ResponseEntity<String> entity = null;
         try {
             service.insert(dto);
