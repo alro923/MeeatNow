@@ -7,17 +7,25 @@
 </head>
 <body>
 Welcome, this is home
-
-<form id="form-login">
+1. insert
+<form id="form-insert">
     email : <input type="text" name="email">
     name : <input type="text" name="name">
     <button type="button" id="submitBtn">제출</button>
 </form>
 
+2. findAll
+<button type="button" id="listBtn">유저목록</button>
+<div id="listView">
+
+</div>
 </body>
 </html>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-    $(document).on('click','#submitBtn',function(){
+    $('#submitBtn').on('click', function () {
+
         var data = {
             email: $('input[name=email]').val(),
             name: $('input[name=name]').val()
@@ -27,44 +35,55 @@ Welcome, this is home
         console.log(JSON.stringify(data));
 
         $.ajax({
-            url: "/user/insert",
+            url: "https://meeatnow.herokuapp.com/user/insert",
             type: "POST",
             data: JSON.stringify(data),
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
 
-            beforeSend: function(){
+            beforeSend: function () {
                 alert("submit_user()");
             },
-            success: function(data){
-                alert(JSON.stringify(data)+'추가되었습니다.');
+            success: function (data) {
+                alert(JSON.stringify(data) + '추가되었습니다.');
             },
-            error: function(error){
-                alert("error: "+ JSON.stringify(error));
+            error: function (error) {
+                alert("error: " + JSON.stringify(error));
             }
 
         })
 
 
-        var user_id = 1;
+    })
 
+    $('#listBtn').on('click',function () {
+
+        console.log("list버튼 눌렀습니다.");
         $.ajax({
-            url: "/user/update/"+user_id,
-            type: "POST",
-            data: JSON.stringify(data),
+            url: "https://meeatnow.herokuapp.com/user/findAll",
+            type: "GET",
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
+            // Origin: 'http://host.com',
+            // Access-Control-Request-Method: 'POST',
+            crossDomain: true,
+            headers: {
+                "accept": "application/json",
+                "Access-Control-Allow-Origin":"*"
+            },
 
-            beforeSend: function(){
+            beforeSend: function () {
                 alert("submit_user()");
             },
-            success: function(data){
-                alert(JSON.stringify(data)+'추가되었습니다.');
+            success: function (data) {
+                alert('success');
+                $('#listView').html(JSON.stringify(data));
             },
-            error: function(error){
-                alert("error: "+ JSON.stringify(error));
+            error: function (error) {
+                alert("error: " + JSON.stringify(error));
             }
 
         })
     })
+
 </script>
