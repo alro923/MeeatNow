@@ -28,7 +28,7 @@ public class UserService {
             repo.save(dto.toEntity());
         } catch (DataIntegrityViolationException e)  //email 값이 유일성을 가지므로 중복되면 예외처리.
         {
-            log.warning("insert user failied...." + e.getMessage());
+            log.warning("insert user failed...." + e.getMessage());
             throw new DataIntegrityViolationException("다른 유저와 email이 중복됩니다.");
         }
     }

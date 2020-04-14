@@ -17,6 +17,19 @@ import java.util.List;
 @Log
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
+//옵션들
+//origins
+//
+//methods
+//
+//allowedHeaders
+//
+//exposedHeaders
+//
+//allowCredentials
+//
+//maxAge.
 @RequestMapping("/user/*")
 public class UserController {
 
@@ -70,6 +83,7 @@ public class UserController {
 
     @GetMapping("/findAll")
     public ResponseEntity<List<UserResponseDto>> findAllDesc() {
+        log.info("findAll 진입.....");
         return new ResponseEntity<>(service.findAllDesc(), HttpStatus.OK);
     }
 
