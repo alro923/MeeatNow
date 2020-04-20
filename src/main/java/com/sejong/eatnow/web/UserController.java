@@ -17,19 +17,7 @@ import java.util.List;
 @Log
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
-//옵션들
-//origins
-//
-//methods
-//
-//allowedHeaders
-//
-//exposedHeaders
-//
-//allowCredentials
-//
-//maxAge.
+@CrossOrigin("*")
 @RequestMapping("/user/*")
 public class UserController {
 
