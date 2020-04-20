@@ -39,7 +39,7 @@ Welcome, this is home
             type: "POST",
             data: JSON.stringify(data),
             dataType: 'json',
-            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            contentType: 'application/json; charset=utf-8',
 
             beforeSend: function () {
                 alert("submit_user()");
@@ -63,10 +63,10 @@ Welcome, this is home
             url: "https://meeatnow.herokuapp.com/user/findAll",
             type: "GET",
             dataType: 'json',
-            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            contentType: 'application/json; charset=utf-8',
             // Origin: 'http://host.com',
             // Access-Control-Request-Method: 'POST',
-            // crossDomain: true,
+            crossDomain: true,
             headers: {
                 "accept": "application/json",
                 "Access-Control-Allow-Origin":"*"
