@@ -67,8 +67,8 @@ public abstract class Classifier {
   private final int imageSizeY;
 
   /** Optional GPU delegate for acceleration. */
-  // TODO: Declare a GPU delegate
-
+  // TODO: Declare a GPU delegate - done
+  private GpuDelegate gpuDelegate = null;
 
   /** An instance of the driver class to run model inference with Tensorflow Lite. */
   // TODO: Declare a TFLite interpreter - done
@@ -178,8 +178,9 @@ public abstract class Classifier {
     tfliteModel = FileUtil.loadMappedFile(activity, getModelPath());
     switch (device) {
       case GPU:
-        // TODO: Create a GPU delegate instance and add it to the interpreter options
-
+        // TODO: Create a GPU delegate instance and add it to the interpreter options - done
+        gpuDelegate = new GpuDelegate();
+        tfliteOptions.addDelegate(gpuDelegate);
         break;
       case CPU:
         break;
@@ -256,8 +257,11 @@ public abstract class Classifier {
       tflite.close();
       tflite = null;
     }
-    // TODO: Close the GPU delegate
-
+    // TODO: Close the GPU delegate - done
+    if (gpuDelegate != null) {
+      gpuDelegate.close();
+      gpuDelegate = null;
+    }
 
     tfliteModel = null;
   }
