@@ -47,7 +47,6 @@ public class ClassifierFloatMobileNet extends Classifier {
     super(activity, device, numThreads);
   }
 
-  // TODO: Specify model.tflite as the model file and labels.txt as the label file - done
   @Override
   protected String getModelPath() {
     return "model.tflite";

@@ -13,7 +13,6 @@
     <string name="tfe_ic_device" translatable="false">Device:</string>
     <string-array name="tfe_ic_devices" translatable="false">
         <item>CPU</item>
-        <!-- TODO: Add GPU  - done -->
         <item>GPU</item>
     </string-array>
 </resources>
