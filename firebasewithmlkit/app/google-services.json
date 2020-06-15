@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "576199377826",
+    "firebase_url": "https://meeatnow-1dfb8.firebaseio.com",
+    "project_id": "meeatnow-1dfb8",
+    "storage_bucket": "meeatnow-1dfb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576199377826:android:7775971fb6e0bc88c6a8fb",
+        "android_client_info": {
+          "package_name": "com.uhhyunjoo.firebasewithmlkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576199377826-1529urlirhfs4ri9hrdqsvagjq2ur759.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW_C75nGDeqe2RSZ7JlqoqtkKmLPw1aTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "576199377826-1529urlirhfs4ri9hrdqsvagjq2ur759.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
