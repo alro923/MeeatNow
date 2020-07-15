@@ -215,7 +215,6 @@ public abstract class CameraActivity extends AppCompatActivity
     try {
       // Initialize the storage bitmaps once when the resolution is known.
       if (rgbBytes == null) {
-
         Camera.Size previewSize = camera.getParameters().getPreviewSize();
         previewHeight = previewSize.height;
         previewWidth = previewSize.width;
@@ -460,11 +459,14 @@ public abstract class CameraActivity extends AppCompatActivity
     if (useCamera2API) {
       CameraConnectionFragment camera2Fragment =
           CameraConnectionFragment.newInstance(
-                  (Size size, int rotation) -> {
-                    previewHeight = size.getHeight();
-                    previewWidth = size.getWidth();
-                    CameraActivity.this.onPreviewSizeChosen(size, rotation);
-                  },
+              new CameraConnectionFragment.ConnectionCallback() {
+                @Override
+                public void onPreviewSizeChosen(final Size size, final int rotation) {
+                  previewHeight = size.getHeight();
+                  previewWidth = size.getWidth();
+                  CameraActivity.this.onPreviewSizeChosen(size, rotation);
+                }
+              },
               this,
               getLayoutId(),
               getDesiredPreviewFrameSize());
@@ -475,6 +477,7 @@ public abstract class CameraActivity extends AppCompatActivity
       fragment =
           new LegacyCameraConnectionFragment(this, getLayoutId(), getDesiredPreviewFrameSize());
     }
+
     getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
   }
 
@@ -589,7 +592,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
   protected abstract void processImage();
 
-  protected abstract void onPreviewSizeChosen(final Size size, final int rfotation);
+  protected abstract void onPreviewSizeChosen(final Size size, final int rotation);
 
   protected abstract int getLayoutId();
 

@@ -1,6 +1,4 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'kotlin-android'
-//apply plugin: 'kotlin-android-extensions'
 
 project.ext.ASSET_DIR = projectDir.toString() + '/src/main/assets'
 
@@ -47,5 +45,3 @@ dependencies {
     // Use local TensorFlow library
     // implementation 'org.tensorflow:tensorflow-lite-local:0.0.0'
 }
-
-// apply plugin: 'com.google.gms.google-services'
